@@ -10,12 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class GerritStatisticsController extends Controller
 {
+    const URL = 'http://metrics.andygrunwald.com/api/';
+
     /**
      *
      * @Route("/statistics/gerrit/activity-monitor/{projectId}", defaults={"projectId" = 59}, name="gerrit-activity-monitor")
      */
     public function activityMonitorAction($projectId, Request $request)
     {
+        // TODO What happens if there is no data?
         $projects = $this->getProjects();
         $projects = array_column($projects, 'Name', 'ID');
         $activity = $this->getActivity($projectId);
@@ -78,12 +81,12 @@ class GerritStatisticsController extends Controller
     }
 
     private function getProjects() {
-        $url = 'http://localhost:8080/gerrit/projects';
+        $url = self::URL . 'gerrit/projects';
         return $this->getAPIResponse($url);
     }
 
     private function getActivity($projectId) {
-        $url = 'http://localhost:8080/gerrit/activity/' . intval($projectId);
+        $url = self::URL . 'gerrit/activity/' . intval($projectId);
         return $this->getAPIResponse($url);
     }
 
