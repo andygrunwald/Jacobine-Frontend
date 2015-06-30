@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if activity.points|length > 0 %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        {{ activityMonitor(activity.points, activity.persons)|raw }}
+
+    {% else %}
+        <div class="alert alert-block">
+            <h4>No activity :(</h4>
+            There is no activity in this Gerrit project. No Changesets, no votes, no comments.<br />
+            Be the first one and create some awesome stuff!
+        </div>
+    {% endif %}
+{% endblock %}

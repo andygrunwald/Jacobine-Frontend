@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/analysis.css') }}" />
+    </head>
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/statistics/gerrit/activity-monitor/">Jacobine</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <!--
+                            <li><a href="#NotImplemented">Home</a></li>
+                            -->
+                            <li class="active"><a href="/statistics/gerrit/activity-monitor/">Statistics</a></li>
+                            <!--
+                            <li><a href="#NotImplemented">About</a></li>
+                            <li><a href="#NotImplemented">Contributing</a></li>
+                            <li><a href="#NotImplemented">Imprint</a></li>
+                            -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <footer class="row-fluid">
+                <div class="span6">
+                    <p>&copy; Andy Grunwald (<a href="https://twitter.com/andygrunwald" title="Andy Grunwald on twitter" >@andygrunwald</a>) 2015 / v0.0.1 alpha</p>
+                </div>
+                <div class="span6 text-right">
+                    <a href="http://www.pixolith.de/" title="Pixolith GbR">
+                        <img src="{{ asset('img/logo-pixolith.jpg') }}" width="133" height="50" border="0" alt="" title="Server sponsored by pixolith">
+                    </a>
+                </div>
+            </footer>
+        </div>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
